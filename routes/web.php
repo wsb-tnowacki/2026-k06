@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OgolneController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /* Route::get('/', function () {
@@ -30,6 +31,7 @@ Route::controller(OgolneController::class)->group(function () {
     Route::get('/o-nas','onas')->name('ogolne.onas');
 });
 
+Route::resource('test',TestController::class);
 
 Route::get('/dashboard', function () {
     //return view('dashboard');
