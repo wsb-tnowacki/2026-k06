@@ -35,7 +35,7 @@ Route::resource('post',PostController::class);
 
 Route::get('/dashboard', function () {
     //return view('dashboard');
-    return redirect(route('start'));
+    return redirect(route('ogolne.start'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
