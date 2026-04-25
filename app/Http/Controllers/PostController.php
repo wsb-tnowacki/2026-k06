@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return 'index';
+        return view('post.lista');
     }
 
     /**
@@ -19,7 +20,7 @@ class TestController extends Controller
      */
     public function create()
     {
-        return 'create';
+        return view('post.dodaj');
     }
 
     /**
@@ -27,38 +28,39 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        return "store, request:$request";
+        $test = "<p>".$request['tytul']."</p>store <br> $request";
+        return "$test" ;   
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        return "show, id:$id";
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        return "edit, id:$id";
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        return "show, request: $request ,id:$id";
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        return "destroy, id:$id";
+        //
     }
 }
