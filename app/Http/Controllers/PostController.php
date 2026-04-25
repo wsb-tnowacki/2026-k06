@@ -31,12 +31,13 @@ class PostController extends Controller
     {
         /* $test = "<p>".$request['tytul']."</p>store <br> $request";
         return "$test" ;  */ 
-        $post = new Post();
+        /* $post = new Post();
         $post->tytul = $request['tytul'];
         $post->autor = request('autor');
         $post->email = request('email');
         $post->tresc = request('tresc');
-        $post->save(); //zapis do bazy
+        $post->save(); //zapis do bazy */
+        Post::create($request->all());
         return redirect(route('post.index'))->with('message','Dodano poprawnie posta');
     }
 
@@ -62,7 +63,9 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        //return 'update';
+        $post->update($request->all());
+        return redirect(route('post.index'))->with('message','Zmieniono poprawnie posta');
     }
 
     /**
