@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('post.lista');
+        $posty = Post::all();
+        return view('post.lista',compact('posty'));
     }
 
     /**
@@ -28,8 +29,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $test = "<p>".$request['tytul']."</p>store <br> $request";
-        return "$test" ;   
+        /* $test = "<p>".$request['tytul']."</p>store <br> $request";
+        return "$test" ;  */ 
+        $post = new Post();
+        $post->tytul = $request['tytul'];
+        $post->autor = request('autor');
+        $post->email = request('email');
+        $post->tresc = request('tresc');
+        $post->save(); //zapis do bazy
+        return redirect(route('post.index'))->with('message','Dodano poprawnie posta');
     }
 
     /**
@@ -37,7 +45,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.post', compact('post'));
     }
 
     /**
@@ -45,7 +53,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        //return 'edit';
+        return view('post.zmien', compact('post'));
     }
 
     /**

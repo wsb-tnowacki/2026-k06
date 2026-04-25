@@ -1,8 +1,8 @@
 @extends('layout.layout')
-@section('tytul', 'WSB - Lista postów')
-@section('podtytul', 'Lista postów')
+@section('tytul', 'WSB - Dodaj posta')
+@section('podtytul', 'Dodaj posta')
 @section('tresc')
-<p>Formularz dodający post</p>
+<p>Formularz dodający posta</p>
     <div class="w-full ">
     <form action="{{ route('post.store') }}" method="POST" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 max00 font-bold mb-2 ">
     @csrf
