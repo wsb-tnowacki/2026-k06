@@ -73,6 +73,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+       // return 'destroy';
+       $post->delete();
+       return redirect(route('post.index'))->with('message','Usunięto poprawnie posta')->with('color','red');
     }
 }

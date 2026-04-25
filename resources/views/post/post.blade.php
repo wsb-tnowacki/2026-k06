@@ -30,6 +30,10 @@
             <a href="{{route('post.edit',$post->id)}}">
                 <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">Edytuj post</button>
             </a>
+            <form action="{{route('post.destroy',$post->id)}}" method="post" onsubmit="return confirm('Czy na pewno usunąć ten post o id {{$post->id}} i tytule {{$post->tytul}}?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"  >Usuń post</button></form>
         </div>
     
 @endisset
