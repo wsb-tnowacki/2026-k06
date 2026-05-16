@@ -4,6 +4,15 @@
 @section('tresc')
 <p>Formularz edytujący posta</p>
     <div class="w-full ">
+                @if ($errors->any())
+            <div class="mb-2 text-red-400">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     @isset($post)
     <form action="{{ route('post.update', $post->id) }}" method="POST" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 max00 font-bold mb-2 ">
     @csrf
