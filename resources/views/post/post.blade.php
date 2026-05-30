@@ -10,10 +10,10 @@
         </div>
         <div class="mb-2">
             <label for="autor" class="block text-gray-700 font-bold mb-2">Autor</label>
-            <input type="text" name="autor" id="autor" value="{{$post->autor}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled>
+            <input type="text" name="autor" id="autor" value="{{$post->user->name}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled>
         </div>
         <div class="mb-2"><label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-            <input type="text" name="email" id="email" value="{{$post->email}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled>
+            <input type="text" name="email" id="email" value="{{$post->user->email}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" disabled>
         </div>
         <div class="mb-2">
             <label for="tresc" class="block text-gray-700 font-bold mb-2">Treść</label>

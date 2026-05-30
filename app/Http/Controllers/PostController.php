@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostStoreRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -14,7 +15,7 @@ class PostController extends Controller
     public function index()
     {
         /* $posty = Post::all(); */
-        $posty = Post::paginate(5);
+        $posty = Post::with('user')->paginate(5);
         return view('post.lista',compact('posty'));
     }
 
@@ -53,6 +54,7 @@ class PostController extends Controller
                 'tresc' => 'required|min:5'
             ]
         ); */
+        $request->merge(['user_id' => Auth::user()->id]);
         Post::create($request->all());
         return redirect(route('post.index'))->with('message','Dodano poprawnie posta');
     }
@@ -80,7 +82,9 @@ class PostController extends Controller
     public function update(PostStoreRequest $request, Post $post)
     {
         //return 'update';
-        $post->update($request->all());
+        $dane = $request->all();
+        $dane['user_id'] = Auth::user()->id;
+        $post->update($dane);
         return redirect(route('post.index'))->with('message','Zmieniono poprawnie posta');
     }
 
